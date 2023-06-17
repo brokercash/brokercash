@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.2;
 
 contract Token {
@@ -15,7 +16,7 @@ contract Token {
         balances[msg.sender] = totalSupply;
     }
     
-    function balanceOf(address owner) public returns(uint) {
+    function balanceOf(address owner) public view returns(uint) {
         return balances[owner];
     }
     
@@ -23,7 +24,7 @@ contract Token {
         require(balanceOf(msg.sender) >= value, 'balance too low');
         balances[to] += value;
         balances[msg.sender] -= value;
-       emit Transfer(msg.sender, to, value);
+        emit Transfer(msg.sender, to, value);
         return true;
     }
     
@@ -42,3 +43,4 @@ contract Token {
         return true;   
     }
 }
+
